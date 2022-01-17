@@ -378,6 +378,8 @@ $(function () {
   });
 
   $(".export").click(function () {
+    const event = new CustomEvent('storage');
+    window.dispatchEvent(event);
     var str = "Material,Quantity,Goal\n"; // column headers
     materials.forEach((mat) => {
       let name = mat.name.replace("'", "");
@@ -401,8 +403,6 @@ $(function () {
         document.body.removeChild(link);
       }
     }
-    const event = new CustomEvent('storage');
-    window.dispatchEvent(event);
   });
 
   $(".filter").change(function () {
