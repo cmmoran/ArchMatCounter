@@ -440,6 +440,7 @@ function checkSaveMats() {
   } else {
     localStorage.archMats = JSON.stringify(materials);
   }
+  console.log("Saved", materials);
 }
 
 checkSaveMats();

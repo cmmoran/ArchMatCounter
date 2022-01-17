@@ -271,7 +271,7 @@ $(function () {
         row.classList.remove("col-6");
         row.classList.add("col-4");
       });
-      if ($(".tracker").text() == "Stop") {
+      if ($(".tracker").text() === "Stop") {
         $(".tracker").click();
       }
       $(".row:hidden:not(.modal *), .hide").show();
@@ -284,7 +284,7 @@ $(function () {
         });
       $(".qty:first").focus();
     } else {
-      if ($(".tracker").text() == "Start") {
+      if ($(".tracker").text() === "Start") {
         $(".tracker").click();
       }
       $(".filter, .modal-body button").prop("disabled", false);
@@ -401,6 +401,8 @@ $(function () {
         document.body.removeChild(link);
       }
     }
+    const event = new CustomEvent('storage');
+    window.dispatchEvent(event);
   });
 
   $(".filter").change(function () {
