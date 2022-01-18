@@ -100,9 +100,9 @@ function readChatbox() {
     ) {
       //Imp-souled here as well, in case user doesn't have enough slots unlocked in item storage.
       name = item
-          .match(/your bank:? [(\.|')+g\s]*/)[0]
-          .split(/your bank:? /)[1]
-          .split(/ x /)[0]
+          .match(/your (material storage)|(bank):? [(\.|')+g\s]*/)[0]
+          .split(/your (material storage)|(bank):? /)[1]
+          .split(/ x /)[1]
           .trim()
           .replace("'", "");
       type = "Fortune";
