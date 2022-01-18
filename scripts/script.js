@@ -94,19 +94,6 @@ function readChatbox() {
         .trim()
         .replace(/(\.|')/g, "");
       type = "Familiar";
-    } else if (
-        (item.indexOf("Fortune perk") > -1 ||
-        item.indexOf("imp-souled") > -1) && item.indexOf("your bank") > -1
-    ) {
-      //Imp-souled here as well, in case user doesn't have enough slots unlocked in item storage.
-      name = item
-          .match(/your (material storage)|(bank):? [(\.|')+g\s]*/)[0]
-          .split(/your (material storage)|(bank):? /)[1]
-          .split(/ x /)[1]
-          .trim()
-          .replace("'", "");
-      type = "Fortune";
-      doubled = item.indexOf("Fortune perk") > -1;
     } else if (item.indexOf("material storage") > -1) {
       name = item
         .trim()
@@ -116,11 +103,26 @@ function readChatbox() {
       if (item.indexOf("imp-souled") > -1) {
         type = "Imp Souled";
       } else if(item.indexOf("Fortune perk") > -1) {
-        type = "Fortune";
+          name = item.split(/ x /)[1]
+              .trim()
+          type = "Fortune";
         doubled = true;
       } else {
         type = "Porter";
       }
+    } else if (
+        (item.indexOf("Fortune perk") > -1 ||
+            item.indexOf("imp-souled") > -1) && item.indexOf("your bank") > -1
+    ) {
+        //Imp-souled here as well, in case user doesn't have enough slots unlocked in item storage.
+        name = item
+            .match(/your (material storage)|(bank):? [(\.|')+g\s]*/)[0]
+            .split(/your (material storage)|(bank):? /)[1]
+            .split(/ x /)[1]
+            .trim()
+            .replace("'", "");
+        type = "Fortune";
+        doubled = item.indexOf("Fortune perk") > -1;
     } else {
       if (chat.length > 0)
         console.log({ chat: chat, item: item, error: "No material found" });
