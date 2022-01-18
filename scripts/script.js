@@ -95,8 +95,8 @@ function readChatbox() {
         .replace(/(\.|')/g, "");
       type = "Familiar";
     } else if (
-        item.indexOf("Fortune perk") > -1 ||
-        item.indexOf("imp-souled") > -1
+        (item.indexOf("Fortune perk") > -1 ||
+        item.indexOf("imp-souled") > -1) && item.indexOf("your bank") > -1
     ) {
       //Imp-souled here as well, in case user doesn't have enough slots unlocked in item storage.
       name = item
