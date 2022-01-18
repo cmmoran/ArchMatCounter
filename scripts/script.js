@@ -112,8 +112,13 @@ function readChatbox() {
         .split(/material storage:? /)[1]
         .trim()
         .replace(/(\.|')/g, "");
-      if (item.indexOf("imp-souled") > -1) type = "Imp Souled";
-      else type = "Porter";
+      if (item.indexOf("imp-souled") > -1) {
+        type = "Imp Souled";
+      } else if(item.indexOf("Fortune perk") > -1) {
+        type = "Fortune";
+      } else {
+        type = "Porter";
+      }
     } else {
       if (chat.length > 0)
         console.log({ chat: chat, item: item, error: "No material found" });
