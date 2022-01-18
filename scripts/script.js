@@ -70,7 +70,7 @@ function readChatbox() {
     //   return console.log("Found old chat, skipping", chatTime, curTime);
 
     if (item.trim() === "") return;
-    let name, type;
+    let name, type, doubled = false;
     if (item.indexOf("You find some") > -1) {
       name = item
         .trim()
@@ -106,6 +106,7 @@ function readChatbox() {
           .trim()
           .replace("'", "");
       type = "Fortune";
+      doubled = item.indexOf("Fortune perk") > -1;
     } else if (item.indexOf("material storage") > -1) {
       name = item
         .trim()
@@ -116,6 +117,7 @@ function readChatbox() {
         type = "Imp Souled";
       } else if(item.indexOf("Fortune perk") > -1) {
         type = "Fortune";
+        doubled = true;
       } else {
         type = "Porter";
       }
@@ -133,6 +135,9 @@ function readChatbox() {
     materials.forEach((mat) => {
       if (mat.name.replace("'", "") === name) {
         mat.qty++;
+        if(doubled) {
+            mat.qty++;
+        }
         tidyTable(name);
       }
     });
