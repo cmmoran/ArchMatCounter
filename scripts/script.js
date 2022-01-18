@@ -134,6 +134,7 @@ function readChatbox() {
       name: name,
       type: type,
     });
+    $(".log").innerHTML("<span>chat: "+chat+" item:"+item+" name:"+name+" type:"+type+"</span>")
     materials.forEach((mat) => {
       if (mat.name.replace("'", "") === name) {
         mat.qty++;
