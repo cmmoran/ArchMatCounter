@@ -78,7 +78,7 @@ function readChatbox() {
         if (item.trim() === "") return;
         console.log("chatparse:",JSON.stringify({
             item, chat, opts
-        }));
+        }, null, 2));
         let name, type, doubled = false;
         if (item.indexOf("You find some") > -1) {
             name = item
