@@ -3,13 +3,17 @@ A1lib.identifyApp("appconfig.json");
 const appColor = A1lib.mixColor(255, 199, 0);
 
 let reader = new Chatbox.default();
-reader.readargs.backwards = true;
-reader.readargs.colors.push([
-    A1lib.mixColor(255, 255, 255), //White text
-    A1lib.mixColor(0, 255, 0), //Green Imp-souled Text
-    A1lib.mixColor(30, 183, 60), //Dark Green Fortune Text
-    A1lib.mixColor(60, 183, 60), //Dark Green Fortune Text
-]);
+reader.readargs = {
+    colors: [
+        A1lib.mixColor(255, 255, 255), //White text
+        A1lib.mixColor(0, 255, 0), //Green Fortune Text
+        A1lib.mixColor(0, 255, 0), //Green Imp-souled Text
+        A1lib.mixColor(45, 186, 21),
+        A1lib.mixColor(60, 183, 30), //Dark Green Fortune Text
+        A1lib.mixColor(58, 176, 30), //Dark Green Fortune Text
+    ],
+    backwards: true,
+};
 
 $(".mats").append("<span>Searching for chatboxes</span>");
 reader.find();
