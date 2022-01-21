@@ -7,8 +7,7 @@ reader.readargs = {
   colors: [
     A1lib.mixColor(255, 255, 255), //White text
     A1lib.mixColor(0, 255, 0), //Green Imp-souled Text
-    A1lib.mixColor(60, 183, 30), //Dark Green Fortune Text
-    A1lib.mixColor(49, 149, 24), //Dark Green Fortune Text
+    A1lib.mixColor(30, 183, 60), //Dark Green Fortune Text
   ],
   backwards: true,
 };
