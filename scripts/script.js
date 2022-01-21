@@ -80,7 +80,7 @@ function readChatbox() {
         console.log("chatparse:",JSON.stringify({
             item, chat, opts
         }, null, 2));
-        let name, type, doubled = false;
+        let name, type;
         if (item.indexOf("You find some") > -1) {
             name = item
                 .trim()
@@ -117,7 +117,6 @@ function readChatbox() {
                     .trim()
                     .replace('.', '');
                 type = "Fortune";
-                doubled = true;
             } else {
                 type = "Porter";
             }
@@ -131,9 +130,9 @@ function readChatbox() {
                 .split(/your (\w+ storage)|(bank):? /)[1]
                 .split(/ x /)[1]
                 .trim()
-                .replace("'", "");
+                .replace("'", "")
+                .replace(".", "");
             type = "Fortune";
-            doubled = item.indexOf("Fortune perk") > -1;
         } else {
             if (chat.length > 0)
                 console.log({chat: chat, item: item, error: "No material found"});
@@ -148,9 +147,6 @@ function readChatbox() {
         materials.forEach((mat) => {
             if (mat.name.replace("'", "") === name) {
                 mat.qty++;
-                if (doubled) {
-                    mat.qty++;
-                }
                 tidyTable(name);
             }
         });
