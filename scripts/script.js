@@ -3,6 +3,7 @@ A1lib.identifyApp("appconfig.json");
 const appColor = A1lib.mixColor(255, 199, 0);
 
 let reader = new Chatbox.default();
+/*
 reader.readargs = {
   colors: [
     A1lib.mixColor(255, 255, 255), //White text
@@ -11,6 +12,7 @@ reader.readargs = {
   ],
   backwards: true,
 };
+*/
 
 $(".mats").append("<span>Searching for chatboxes</span>");
 reader.find();
