@@ -58,11 +58,11 @@ function readChatbox() {
     var chat = "";
 
     for (a in opts) {
-        chat += opts[a].text + (opts[a].text.startsWith('[') ? " " : "\n");
+        chat += opts[a].text + " ";
     }
 
     // let chatParse = chat.split(/\d+:?|\[|\]/g);
-    let chatParse = chat.split('\n');
+    let chatParse = chat.split(/\[\d+:\d+:\d+\]/g);
     chatParse.forEach((item) => {
         // Start of a chat "buffer", to prevent extra chat reads.
         // let date = new Date();
@@ -74,11 +74,12 @@ function readChatbox() {
         // if (chat.match(/\d*:\d*:\d*/)) chatTime = chat.match(/\d*:\d*:\d*/)[0];
         // if (chatTime !== curTime)
         //   return console.log("Found old chat, skipping", chatTime, curTime);
+        item = item.trim();
 
         if (item.trim() === "") return;
         console.log("chatparse:",JSON.stringify({
             item, chat, opts
-        }, null, 2));
+        }));
         let name, type, doubled = false;
         if (item.indexOf("You find some") > -1) {
             name = item
