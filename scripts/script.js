@@ -75,6 +75,9 @@ function readChatbox() {
         //   return console.log("Found old chat, skipping", chatTime, curTime);
 
         if (item.trim() === "") return;
+        console.log("chatparse:",{
+            item: item,
+        });
         let name, type, doubled = false;
         if (item.indexOf("You find some") > -1) {
             name = item
