@@ -79,7 +79,7 @@ function readChatbox() {
         if (item.trim() === "") return;
         console.log("chatparse:",JSON.stringify({
             item, chat, opts
-        }));
+        }, null, 2));
         let name, type, doubled = false;
         if (item.indexOf("You find some") > -1) {
             name = item
@@ -90,7 +90,7 @@ function readChatbox() {
             type = "Normal";
         } else if (item.indexOf("Your auto-screener") > -1) {
             //Check if material storage is in the same chat line, if it is, skip this output
-            if (chat.indexOf("material storage") > -1) return;
+            if (chat.indexOf("storage") > -1) return;
             name = item
                 .trim()
                 .split("Your auto-screener spits out some ")[1]
@@ -104,10 +104,10 @@ function readChatbox() {
                 .trim()
                 .replace(/(\.|')/g, "");
             type = "Familiar";
-        } else if (item.indexOf("material storage") > -1) {
+        } else if (item.indexOf("storage") > -1) {
             name = item
                 .trim()
-                .split(/material storage:? /)[1]
+                .split(/storage:? /)[1]
                 .trim()
                 .replace(/(\.|')/g, "");
             if (item.indexOf("imp-souled") > -1) {
@@ -126,8 +126,8 @@ function readChatbox() {
         ) {
             //Imp-souled here as well, in case user doesn't have enough slots unlocked in item storage.
             name = item
-                .match(/your (material storage)|(bank):? [(\.|')+g\s]*/)[0]
-                .split(/your (material storage)|(bank):? /)[1]
+                .match(/your (\w+ storage)|(bank):? [(\.|')+g\s]*/)[0]
+                .split(/your (\w+ storage)|(bank):? /)[1]
                 .split(/ x /)[1]
                 .trim()
                 .replace("'", "");
