@@ -58,10 +58,11 @@ function readChatbox() {
     var chat = "";
 
     for (a in opts) {
-        chat += opts[a].text + " ";
+        chat += opts[a].text + opts[a].text.startsWith('[') ? "\n" : " ";
     }
 
-    let chatParse = chat.split(/\d+:?|\[|\]/g);
+    // let chatParse = chat.split(/\d+:?|\[|\]/g);
+    let chatParse = chat.split('\n');
     chatParse.forEach((item) => {
         // Start of a chat "buffer", to prevent extra chat reads.
         // let date = new Date();
