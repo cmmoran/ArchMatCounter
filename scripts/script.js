@@ -58,7 +58,7 @@ function readChatbox() {
     var chat = "";
 
     for (a in opts) {
-        chat += opts[a].text + opts[a].text.startsWith('[') ? "\n" : " ";
+        chat += (opts[a].text + opts[a].text.startsWith('[') ? "\n" : " ");
     }
 
     // let chatParse = chat.split(/\d+:?|\[|\]/g);
