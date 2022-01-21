@@ -115,6 +115,7 @@ function readChatbox() {
             } else if (item.indexOf("Fortune perk") > -1) {
                 name = item.split(/ x /)[1]
                     .trim()
+                    .replace('.', '');
                 type = "Fortune";
                 doubled = true;
             } else {
